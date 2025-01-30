@@ -65,4 +65,8 @@ class BooksService(private val db: JdbcTemplate) {
         )
         return books.copy(id = id) // Return a copy of the message with the new id
     }
+
+    fun delete(id:String):Boolean{
+        return db.update("delete from books where id = ?", id) > 0
+    }
 }
